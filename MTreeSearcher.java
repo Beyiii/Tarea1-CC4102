@@ -3,12 +3,14 @@ import java.util.List;
 
 public class MTreeSearcher {
     
-    public List<Point> search(MTreeNode root, Ball query) {
+    public List<Point> search(IMTreeNode root, Ball query) {
         List<Point> result = new ArrayList<>();
-        searchRecursive(root, query, result);
+        MtreeCount count = new MtreeCount();
+
+        root.searchRecursive(count, query, result);
         return result;
     }
-
+    /* 
     private void searchRecursive(MTreeNode node, Ball query, List<Point> result) {
         if (node.isLeaf()) {
             for (Entry entry : node.getEntries()) {
@@ -28,4 +30,5 @@ public class MTreeSearcher {
             }
         }
     }
+    */
 }

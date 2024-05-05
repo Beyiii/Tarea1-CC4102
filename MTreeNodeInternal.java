@@ -33,8 +33,8 @@ public class MTreeNodeInternal implements IMTreeNode {
     }
 
 
-//    public void addEntry(Entry entry) {
-//            entries.add(entry);
-//        }
-
+    public void addEntry(Entry entry) {
+            entries.add(entry);
+    }
+    
 }

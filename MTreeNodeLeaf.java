@@ -14,7 +14,7 @@ public class MTreeNodeLeaf implements IMTreeNode{
     }
 
     //Getter.
-    public Entry getEntries() {
+    public Entry getEntry() {
         return entry;
     }
 

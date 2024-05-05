@@ -1,7 +1,7 @@
-import java.util.List;
+//import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
+public class main {
+    public static void Main(String[] args) {
         Point pA = new Point(0, 1);
         Point pB= new Point(1, 0);
         Point pC = new Point(1,1);
@@ -9,9 +9,7 @@ public class Main {
         Point pE = new Point(-1,0);
         Point pF = new Point(1,3);
         Point pG = new Point(2,7);
-        Point q = new Point(0,0);
-
-        
+        //Point q = new Point(0,0);
 
         MTreeNodeLeaf hojaB = new MTreeNodeLeaf(pB); 
         MTreeNodeLeaf hojaC = new MTreeNodeLeaf(pC); 
@@ -38,11 +36,8 @@ public class Main {
         MTreeNodeInternal tree= new MTreeNodeInternal();
         tree.addEntry(eTree);
 
-        System.err.println(tree.getEntries());
-        System.err.println(lista);
-        System.err.println(lista);
-        System.err.println(lista);
-        System.err.println(lista);
+        System.err.println(hojaB.getEntry());
+        
 
 /* 
         Ball Q = new Ball(q, 1);

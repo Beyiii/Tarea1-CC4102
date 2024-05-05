@@ -10,6 +10,7 @@ public class MTreeSearcher {
         root.searchRecursive(count, query, result);
         return result;
     }
+
     /* 
     private void searchRecursive(MTreeNode node, Ball query, List<Point> result) {
         if (node.isLeaf()) {

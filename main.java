@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -23,14 +22,33 @@ public class Main {
         MTreeNodeInternal nodoD = new MTreeNodeInternal();
         MTreeNodeInternal nodoF = new MTreeNodeInternal();
 
+
         nodoA.addEntry(hojaB.getEntry());
         nodoA.addEntry(hojaC.getEntry());
         nodoD.addEntry(hojaG.getEntry());
         nodoF.addEntry(hojaE.getEntry());
 
+        Entry eA = new Entry(pA, 2, nodoA);
+        Entry eD = new Entry(pD, 3, nodoD);
 
+        nodoF.addEntry(eA);
+        nodoF.addEntry(eD);
+        
+        Entry eTree = new Entry(pF, 4.2, nodoF);
+        MTreeNodeInternal tree= new MTreeNodeInternal();
+        tree.addEntry(eTree);
 
+        System.err.println(tree.getEntries());
+        System.err.println(lista);
+        System.err.println(lista);
+        System.err.println(lista);
+        System.err.println(lista);
 
-
+/* 
+        Ball Q = new Ball(q, 1);
+        MTreeSearcher searcher = new MTreeSearcher();
+        List<Point> lista = searcher.search(tree, Q);
+        System.err.println(lista);
+*/
     }
 }

@@ -2,13 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MTreeSearcher {
+    private MtreeCount count; 
     
     public List<Point> search(IMTreeNode root, Ball query) {
         List<Point> result = new ArrayList<>();
-        MtreeCount count = new MtreeCount();
+        count = new MtreeCount();
 
         root.searchRecursive(count, query, result);
         return result;
+    }
+
+    public MtreeCount getCount(){
+        return count;
     }
 
     /* 

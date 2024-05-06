@@ -9,12 +9,14 @@ public class Entry{
     private Point point;
     private double coveringRadius;
     private IMTreeNode childNode;
+    private boolean isLeaf;
 
     //Constructor para un nodo hoja.
     public Entry(Point point) {
         this.point = point;
         this.coveringRadius = 0; // Por defecto
         this.childNode = null; // Por defecto
+        this.isLeaf = true;
     }
 
     //Constructor para un nodo interno.
@@ -22,6 +24,7 @@ public class Entry{
         this.point = point;
         this.coveringRadius = coveringRadius;
         this.childNode = childNode;
+        this.isLeaf = false;
     }
 
     //getter.
@@ -37,5 +40,10 @@ public class Entry{
     //getter.
     public IMTreeNode getChildNode() {
         return childNode;
+    }
+
+    //getter.
+    public boolean isLeaf(){
+        return isLeaf;
     }
 }

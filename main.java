@@ -1,6 +1,18 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class main {
+
+    public static void procesarLista(List<Integer> L) {
+        List<Integer> A = new ArrayList<>(L); // Creamos una copia de L en A
+
+        // Removemos todos los elementos pares de L
+        for (Integer num : A) {
+            if (num % 2 == 0) {
+                    L.remove(num); // Removemos el número par de L
+            }
+       }
+    }
     public static void main(String[] args) {
         Point pA = new Point(0, 1);
         Point pB= new Point(1, 0);
@@ -9,7 +21,14 @@ public class main {
         Point pE = new Point(-1,0);
         Point pF = new Point(1,3);
         Point pG = new Point(2,7);
-        Point q = new Point(0,0);
+        Point pH = new Point(3, 1);
+        Point pI= new Point(4, 0);
+        Point pJ = new Point(10,1);
+        Point pK = new Point(5,6);
+        Point pL = new Point(-1,7);
+        Point pM = new Point(10,13);
+        Point pN = new Point(25,70);
+        Point q = new Point(10,9);
 
         MTreeNodeLeaf hojaB = new MTreeNodeLeaf(pB); 
         MTreeNodeLeaf hojaC = new MTreeNodeLeaf(pC); 
@@ -36,14 +55,47 @@ public class main {
         MTreeNodeInternal tree= new MTreeNodeInternal();
         tree.addEntry(eTree);
 
-        System.err.println((nodoA.getEntries()).get(0));
+        //System.err.println((nodoA.getEntries()).get(0));
         
 
         Ball Q = new Ball(q, 1);
         MTreeSearcher searcher = new MTreeSearcher();
         List<Point> lista = searcher.search(tree, Q);
-        System.err.println(lista);
-        System.err.println(searcher.getCount().getCount());
+        //System.err.println(lista);
+        //System.err.println(searcher.getCount().getCount());
+        
+        List<Point> puntos = new ArrayList<>();
+        puntos.add(pA);
+        puntos.add(pB);
+        puntos.add(pC);
+        puntos.add(pD);
+        puntos.add(pE);
+        puntos.add(pF);
+        puntos.add(pG);
+        puntos.add(pH);
+        puntos.add(pI);
+        puntos.add(pJ);
+        puntos.add(pK);
+        puntos.add(pL);
+        puntos.add(pM);
+        puntos.add(pN);
+        BuilderCP1 treeCP1 = new BuilderCP1(3);
+        NodePoint treetj = treeCP1.buildMTree(puntos);
+        System.err.println(treetj.getListNodePoints());
+        /*
+        NodePoint nodePoint1 =  treetj.getListNodePoints().get(0);
+        NodePoint nodePoint2 =  treetj.getListNodePoints().get(1);
+        NodePoint nodePoint3 =  treetj.getListNodePoints().get(2);
+        System.err.println(nodePoint1.getListNodePoints());
+        System.err.println(nodePoint2.getListNodePoints());
+        System.err.println(nodePoint3.getListNodePoints());
+        System.err.println(nodePoint1.getListPoints());
+        System.err.println(nodePoint2.getListPoints());
+        System.err.println(nodePoint3.getListNodePoints());
+         */
+        
+        
 
+        
     }
 }

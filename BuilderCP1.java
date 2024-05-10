@@ -2,56 +2,60 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MTreeBuilderCP {
-    private int maxEntries; // Máxima cantidad de entradas permitidas en un nodo B
 
-    public MTreeBuilderCP(int maxEntries) {
+public class BuilderCP1 {
+    private int maxEntries; // Máxima cantidad de entradas permitidas en un nodo B
+    
+    public BuilderCP1(int maxEntries) {
         this.maxEntries = maxEntries;
     }
 
-    public MTreeNodeInternal buildMTree(List<Point> points) {
+    public NodePoint buildMTree(List<Point> points) {
         List<Point> listPoints = points; 
         if (points.size() <= maxEntries) {
-            MTreeNodeInternal tree = new MTreeNodeInternal();
+            NodePoint tree = new NodePoint();
             for (Point point : points) {
-                MTreeNodeLeaf leaf = new MTreeNodeLeaf(point);
-                tree.addEntry(leaf.getEntry());
+                tree.addPoint(point);
             }
             return tree;
         }
-
-        System.err.println("hola");
 
         // Caso recursivo
         List<Point> samples = selectSamples(listPoints);
         List<List<Point>> partitions = assignPointsToSamples(points, samples);
 
         for (List<Point> partition : partitions) {
-            int minEntries = (int)Math.round(maxEntries/2);
+            int minEntries = (int)Math.ceil((double)maxEntries/2);
             if (partition.size() < minEntries) {
                 redistributePoints(partition, samples, partitions);
             }
         }
 
-        System.err.println(partitions);
-
         // Se vuelve al paso dos
         if (samples.size() == 1){
-            return buildMTree(points);
+            System.err.println("Se devuelve al paso 2");
+            listPoints.addAll(samples);
+            return buildMTree(listPoints);
         }
 
         // Se obtiene el arbol tj
-        List<MTreeNodeInternal> childNodes = new ArrayList<>();
-        System.err.println(childNodes);
+        NodePoint tree = new NodePoint();
+        System.err.println("empieza recursion");
         for (List<Point> partition : partitions) {
-            MTreeNodeInternal childNode = buildMTree(partition);
-            System.err.println(childNode);
-            childNodes.add(childNode);
+            NodePoint childNodePoint = buildMTree(partition);
+            tree.addNodePoint(childNodePoint);
         }
-        
-
-        MTreeNodeInternal parentNode = new MTreeNodeInternal();
-        return parentNode;
+        System.err.println("Retorna arbol");
+        System.err.println(samples);
+        System.err.println(partitions);
+        //NodePoint nodePoint1 =  tree.getListNodePoints().get(0);
+        //NodePoint nodePoint2 =  tree.getListNodePoints().get(1);
+        //System.err.println(tree.getListNodePoints());
+        //System.err.println(nodePoint1.getListNodePoints());
+        //System.err.println(nodePoint2.getListNodePoints());
+        //System.err.println(nodePoint1.getListPoints());
+        //System.err.println(nodePoint2.getListPoints());
+        return tree;
     }
 
     // esto está malo pero es lo que había despues del for
@@ -66,8 +70,15 @@ public class MTreeBuilderCP {
     
     // Hace F 
     private List<Point> selectSamples(List<Point> points) {
-        int x = (int)Math.round(points.size() / maxEntries);
+        System.err.println("empieza función samples");
+        System.err.println(points);
+        System.err.println(points.size());
+        System.err.println(maxEntries);
+        System.err.println((double)points.size()/maxEntries);
+        int x = (int)Math.ceil((double)points.size()/maxEntries);
+        System.err.println(x);
         int k = Math.min(maxEntries, x);
+        System.err.println(k);
         List<Point> samples = new ArrayList<>();
         Random random = new Random();
         while (samples.size() < k) {
@@ -76,11 +87,18 @@ public class MTreeBuilderCP {
             samples.add(sample); 
             points.remove(index);      
         }
+        System.err.println("Termina función samples");
+        System.err.println(points);
+        System.err.println(samples);
         return samples;
     }
    
     // Asignar puntos al sample
     private List<List<Point>> assignPointsToSamples(List<Point> points, List<Point> samples) {
+System.err.println("empieza funcion assignPoints");
+        System.err.println(samples);
+        System.err.println(points);
+
         List<List<Point>> partitions = new ArrayList<>();
         for (Point sample : samples) {
             partitions.add(new ArrayList<>());
@@ -90,6 +108,11 @@ public class MTreeBuilderCP {
             Point nearestSample = findNearestSample(point, samples);
             partitions.get(samples.indexOf(nearestSample)).add(point);
         }
+
+        System.err.println("termina funcion assignPoints");
+        System.err.println(samples);
+        System.err.println(points);
+        System.err.println(partitions);
         return partitions;
     }
 
@@ -120,6 +143,11 @@ partitions{{2,a,b,c},{3}}
 */  
     // Implementa aquí la redistribución de puntos
     private void redistributePoints(List<Point> partition, List<Point> samples, List<List<Point>> partitions) {
+        System.err.println("empieza redistribucion");
+        System.err.println(samples);
+        System.err.println(partition);
+        System.err.println(partitions);
+
         int indice = partitions.indexOf(partition);
         samples.remove(indice);
         partitions.remove(indice);
@@ -129,3 +157,4 @@ partitions{{2,a,b,c},{3}}
         }
     }
 }
+

@@ -1,23 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-
-public class BuilderCP1 {
+public class AAAA {
+    /*
+     public class BuilderCP1 {
     private int maxEntries; // Máxima cantidad de entradas permitidas en un nodo B
-    private final int minEntries; // Mínima cantidad de entradas permitidas en un nodo b
     
     public BuilderCP1(int maxEntries) {
         this.maxEntries = maxEntries;
-        this.minEntries = (int) Math.ceil((double) maxEntries / 2);
     }
 
     public NodePoint buildMTree(List<Point> points) {
         List<Point> listPoints = points; 
-        //Caso base
-        if (listPoints.size() <= maxEntries) {
+        if (points.size() <= maxEntries) {
             NodePoint tree = new NodePoint();
-            for (Point point : listPoints) {
+            for (Point point : points) {
                 tree.addPoint(point);
             }
             return tree;
@@ -25,14 +19,12 @@ public class BuilderCP1 {
 
         // Caso recursivo
         List<Point> samples = selectSamples(listPoints);
-        List<List<Point>> partitions = assignPointsToSamples(listPoints, samples);
+        List<List<Point>> partitions = assignPointsToSamples(points, samples);
 
-        // Crear copia de partitions para evitar ConcurrentModificationException
-        List<List<Point>> partitionsCopy = new ArrayList<>(partitions);
-
-        for (List<Point> partition : partitionsCopy) { // Iterar sobre la copia
+        for (List<Point> partition : partitions) {    //LINEA 27
+            int minEntries = (int)Math.ceil((double)maxEntries/2);
             if (partition.size() < minEntries) {
-                redistributePoints(partition, samples, partitions); 
+                redistributePoints(partition, samples, partitions);
             }
         }
 
@@ -45,10 +37,9 @@ public class BuilderCP1 {
         // Se obtiene el arbol tj
         NodePoint tree = new NodePoint();
         for (List<Point> partition : partitions) {
-            NodePoint childNodePoint = buildMTree(partition);
+            NodePoint childNodePoint = buildMTree(partition);   //LINEA 45
             tree.addNodePoint(childNodePoint);
         }
-        
         return tree;
     }
 
@@ -69,6 +60,7 @@ public class BuilderCP1 {
    
     // Asignar puntos al sample
     private List<List<Point>> assignPointsToSamples(List<Point> points, List<Point> samples) {
+
         List<List<Point>> partitions = new ArrayList<>();
         for (Point sample : samples) {
             partitions.add(new ArrayList<>());
@@ -103,6 +95,8 @@ public class BuilderCP1 {
 
     // Implementa aquí la redistribución de puntos
     private void redistributePoints(List<Point> partition, List<Point> samples, List<List<Point>> partitions) {
+
+
         int indice = partitions.indexOf(partition);
         samples.remove(indice);
         partitions.remove(indice);
@@ -113,3 +107,5 @@ public class BuilderCP1 {
     }
 }
 
+     */
+}

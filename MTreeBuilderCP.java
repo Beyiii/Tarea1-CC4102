@@ -20,8 +20,6 @@ public class MTreeBuilderCP {
             return tree;
         }
 
-        System.err.println("hola");
-
         // Caso recursivo
         List<Point> samples = selectSamples(listPoints);
         List<List<Point>> partitions = assignPointsToSamples(points, samples);
@@ -33,7 +31,7 @@ public class MTreeBuilderCP {
             }
         }
 
-        System.err.println(partitions);
+        //System.err.println(partitions);
 
         // Se vuelve al paso dos
         if (samples.size() == 1){
@@ -42,10 +40,10 @@ public class MTreeBuilderCP {
 
         // Se obtiene el arbol tj
         List<MTreeNodeInternal> childNodes = new ArrayList<>();
-        System.err.println(childNodes);
+        //System.err.println(childNodes);
         for (List<Point> partition : partitions) {
             MTreeNodeInternal childNode = buildMTree(partition);
-            System.err.println(childNode);
+            //System.err.println(childNode);
             childNodes.add(childNode);
         }
         

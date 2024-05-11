@@ -81,18 +81,43 @@ public class main {
         puntos.add(pN);
         BuilderCP1 treeCP1 = new BuilderCP1(3);
         NodePoint treetj = treeCP1.buildMTree(puntos);
-        System.err.println(treetj.getListNodePoints());
-        /*
+        List<Point> listaAllPoints = treetj.getAllPoints();
+        System.err.println("Puntitos en el arbol\n");
+        System.err.println(listaAllPoints);
+        System.err.println("\n");
+
+
+
+
+        /* 
+        
+        List<NodePoint> listaNode = treetj.getListNodePoints();
+        
+        System.err.println(listaNode);
+        System.err.println("\n");
+        
+        
         NodePoint nodePoint1 =  treetj.getListNodePoints().get(0);
         NodePoint nodePoint2 =  treetj.getListNodePoints().get(1);
         NodePoint nodePoint3 =  treetj.getListNodePoints().get(2);
+
+        System.err.println("ListNodePoints()\n");
+
         System.err.println(nodePoint1.getListNodePoints());
         System.err.println(nodePoint2.getListNodePoints());
         System.err.println(nodePoint3.getListNodePoints());
+        System.err.println("\n");
+
+        NodePoint nodePoint4 =  nodePoint3.getListNodePoints().get(0);
+        NodePoint nodePoint5 =  nodePoint3.getListNodePoints().get(1);
+        System.err.println("ListPoints()\n");
+
         System.err.println(nodePoint1.getListPoints());
         System.err.println(nodePoint2.getListPoints());
-        System.err.println(nodePoint3.getListNodePoints());
-         */
+        System.err.println(nodePoint3.getListPoints());
+        System.err.println(nodePoint4.getListPoints());
+        System.err.println(nodePoint5.getListPoints());
+        */
         
         
 

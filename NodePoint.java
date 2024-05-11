@@ -30,5 +30,20 @@ public class NodePoint {
     public int getSize(){
         return listNodePoints.size();
     }
+
+    public List<Point> getAllPoints() {
+        List<Point> allPoints = new ArrayList<>();
+        getAllPointsRecursive(this, allPoints);
+        return allPoints;
+    }
+    
+    private void getAllPointsRecursive(NodePoint node, List<Point> allPoints) {
+        for (Point point : node.getListPoints()) {
+            allPoints.add(point);
+        }
+        for (NodePoint child : node.getListNodePoints()) {
+            getAllPointsRecursive(child, allPoints);
+        }
+    }
     
 }
